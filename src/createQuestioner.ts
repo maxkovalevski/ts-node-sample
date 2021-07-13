@@ -12,7 +12,7 @@ export function createQuestioner(): Questioner {
     output: process.stdout,
   });
 
-  const ask = promisify(rlInterface.question).bind(rlInterface);
+  const ask = promisify(rlInterface.question).bind(rlInterface) as unknown as (text: string) => Promise<string>;
 
   const finishUp = () => {
     rlInterface.close();

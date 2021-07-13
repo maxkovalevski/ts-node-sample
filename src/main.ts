@@ -1,17 +1,20 @@
 import { createQuestioner } from "./createQuestioner";
 import { greeting } from "./greeting";
+import usersDB from './users.json';
 
 async function main() {
   try {
     const questioner = createQuestioner();
-    const firstName = await questioner.ask("Type your first name: ");
-    const username = await questioner.ask("Type your username: ");
+    const username = await questioner.ask("Type your name: ");
 
-    greeting(firstName, username);
+    const registeredUsers = usersDB.find((user) => user.username === username);
+
+    greeting(registeredUsers);
 
     questioner.finishUp();
   } catch (e) {
     console.error(e);
+    process.exit();
   }
 }
 
