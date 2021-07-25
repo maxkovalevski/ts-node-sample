@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "name": "sword",
+        "level": "10",
+        "icon": "🗡"
+    },
+    {
+        "id": "2",
+        "name": "bow",
+        "level": "7",
+        "icon": "🏹"
+    },
+    {
+        "id": "3",
+        "name": "shield",
+        "level": "5",
+        "icon": "🛡"
+    }
+]
