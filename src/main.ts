@@ -1,15 +1,18 @@
 import { createQuestioner } from "./createQuestioner";
 import { greeting } from "./greeting";
+import { createMerchant } from "./merchant";
 
 async function main() {
   try {
     const questioner = createQuestioner();
-    const firstName = await questioner.ask("Type your first name: ");
     const username = await questioner.ask("Type your username: ");
+    const level = await questioner.ask("Type your level: ");
 
-    greeting(firstName, username);
+    greeting(username);
 
-    questioner.finishUp();
+    const merchant = createMerchant("Trader 1", questioner);
+
+    merchant.startDialog({ name: username, level });
   } catch (e) {
     console.error(e);
   }
