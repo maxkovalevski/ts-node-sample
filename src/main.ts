@@ -1,13 +1,18 @@
+import { Buildable } from "./Buildable";
 import { createQuestioner } from "./createQuestioner";
-import { greeting } from "./greeting";
 
 async function main() {
   try {
     const questioner = createQuestioner();
-    const firstName = await questioner.ask("Type your first name: ");
-    const username = await questioner.ask("Type your username: ");
+    const transactionId = await questioner.ask("Type the transaction ID: ");
 
-    greeting(firstName, username);
+    type loggerFn = (id: number | string) => void;
+
+    const logTransaction: loggerFn = (id: string) => {
+      console.log(`[${new Date().toDateString()}] ${id.trim()}`);
+    };
+
+    logTransaction(transactionId);
 
     questioner.finishUp();
   } catch (e) {
